@@ -10,7 +10,7 @@ import Logo from './Logo.astro';
     <Logo />
   </div>
 
-  <nav>
+  <nav class="hidden lg:flex">
     <ul
       class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
     >
@@ -23,15 +23,57 @@ import Logo from './Logo.astro';
     </ul>
   </nav>
 
-  <nav class="flex flex-grow basis-0 justify-end">
+  <nav class="hidden flex-grow basis-0 justify-end lg:flex">
     <ul
       class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
     >
       <li><a href="#">Support</a></li>
       <li><a href="#">Store</a></li>
       <li><a href="#">Account</a></li>
-      <li><a href="#">Menu</a></li>
     </ul>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <nav class="flex lg:hidden flex-col">
+    <ul
+      class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
+    >
+      <li><a href="#" id="menu-btn">Menu</a></li>
+    </ul>
+
+    <div 
+      id="navbar-mobile" 
+      class="invisible opacity-0 transition-all duration-500 bg-white fixed top-0 left-0 w-full h-full py-3"
+    >
+      <ul
+      id="menu-btn-mobile"
+      class="flex justify-end text-sm px-10 [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-black [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
+      >
+        <li><a href="#" id="menu-btn">Menu</a></li>
+      </ul>
+
+    <div class="flex flex-col flex-grow basis-0 mt-2 px-4">
+      <ul
+        class="flex flex-col gap-4 text-md [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-black [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 [&>li]:py-2"
+      >
+      <li class="hover:bg-black/5"><a href="#">Model S</a></li>
+      <li class="hover:bg-black/5"><a href="#">Model 3</a></li>
+      <li class="hover:bg-black/5"><a href="#">Model X</a></li>
+      <li class="hover:bg-black/5"><a href="#">Model I</a></li>
+      <li class="hover:bg-black/5"><a href="#">Powerwall</a></li>
+      <li class="hover:bg-black/5"><a href="#">Charging</a></li>
+      </ul>
+
+      <ul
+        class="flex flex-col gap-4 text-md [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-black [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 [&>li]:py-2"
+      >
+        <li class="hover:bg-black/5"><a href="#">Support</a></li>
+        <li class="hover:bg-black/5"><a href="#">Store</a></li>
+        <li class="hover:bg-black/5"><a href="#">Account</a></li>
+      </ul>
+    </div>
+    
+    </div>
   </nav>
 
   <div
@@ -44,6 +86,27 @@ import Logo from './Logo.astro';
     "
   ></div>
 </header>
+
+<script>
+  const $menuBtn = document.querySelector('#menu-btn') as HTMLElement;
+  const $menuBtnMobile = document.querySelector('#menu-btn-mobile') as HTMLElement;
+
+  const $navbarMobile = document.querySelector('#navbar-mobile') as HTMLElement;
+
+
+  $menuBtn.addEventListener('click', () => {
+    $navbarMobile.style.opacity = "1";
+    $navbarMobile.style.visibility = "visible";
+  });
+
+  $menuBtnMobile.addEventListener('click', () => {
+    $navbarMobile.style.opacity = "0";
+    $navbarMobile.style.visibility = "hidden";
+
+  });
+
+  
+</script>
 
 <script>
   const listItem = document.querySelectorAll('#landingHeader li');
