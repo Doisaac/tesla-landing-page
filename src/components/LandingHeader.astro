@@ -72,7 +72,7 @@ import Logo from './Logo.astro';
         <li class="hover:bg-black/5"><a href="#">Account</a></li>
       </ul>
     </div>
-    
+
     </div>
   </nav>
 
@@ -90,9 +90,7 @@ import Logo from './Logo.astro';
 <script>
   const $menuBtn = document.querySelector('#menu-btn') as HTMLElement;
   const $menuBtnMobile = document.querySelector('#menu-btn-mobile') as HTMLElement;
-
   const $navbarMobile = document.querySelector('#navbar-mobile') as HTMLElement;
-
 
   $menuBtn.addEventListener('click', () => {
     $navbarMobile.style.opacity = "1";
@@ -104,8 +102,6 @@ import Logo from './Logo.astro';
     $navbarMobile.style.visibility = "hidden";
 
   });
-
-  
 </script>
 
 <script>
